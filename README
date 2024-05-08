@@ -1,0 +1,41 @@
+COSC2200/
+│
+├── src/                  # Source files for core functionality
+│   ├── model/            # Model classes representing the business logic
+│   │   ├── Account.php
+│   │   ├── Customer.php
+│   │   ├── SavingsAccount.php
+│   │   ├── GenericAccount.php
+│   │   ├── CheckingAccount.php
+│   │   └── PersonalAccount.php
+│   │
+│   ├── interface/        # Interfaces
+│   │   └── Transactable.php
+│   │
+│   └── index.php         # Main entry point of the web application
+│
+├── vendor/               # Third-party dependencies (managed by Composer)
+│
+├── public/               # Publicly accessible files
+│   ├── css/              # CSS files
+│   ├── js/               # JavaScript files
+│   └── index.php         # Public index file that includes src/index.php
+│
+├── config/               # Configuration files
+│   └── database.php      # Database connection settings
+│
+├── tests/                # Unit and functional tests
+│
+├── .gitignore            # Specifies intentionally untracked files to ignore
+└── README.md             # Project overview and general documentation
+
+Week 3
+--
+Classroom Strategy:
+1. Start with the Account Class: Explain the concept of classes, constructors, access specifiers, and methods.
+2. Add the Customer Class: Introduce object relationships and aggregation.
+3. Extend with SavingsAccount: Teach inheritance and method overriding.
+4. Introduce Abstract and Final Classes: Discuss abstract classes and the final keyword.
+5. Implement the Transactable Interface: Cover interfaces and their implementation.
+6. Interactive Coding: Code together these snippets, testing and expanding on them in real-time.
+7. Project Expansion: Encourage students to add features like error handling, more account types, or enhanced transaction details.
