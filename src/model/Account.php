@@ -4,7 +4,7 @@ class Account
 {
   public $accountNumber;
   protected $balance;
-  private $customerName;
+  private ?string $customerName;    //WEEK 4: Nullable type, customerName can be null
 
 
   public function __construct($customerName, $accountNumber, $balance = 0)
@@ -19,6 +19,8 @@ class Account
   }
 
   public function displayAccount(){
+      //WEEK 4:
+      $nameDisplay = $this->customerName ?? 'Unknown Customer';
       echo "Account {$this->accountNumber} owned by {$this->customerName} has a balance: {$this->balance}";
   }
 

@@ -39,3 +39,23 @@ Classroom Strategy:
 5. Implement the Transactable Interface: Cover interfaces and their implementation.
 6. Interactive Coding: Code together these snippets, testing and expanding on them in real-time.
 7. Project Expansion: Encourage students to add features like error handling, more account types, or enhanced transaction details.
+
+Week 4
+--
+In PHP, certain concepts like generics and nullable types are not directly supported in the same way they
+are in languages like Java or C#. However, PHP 7.1 and later versions introduced nullable types, and while PHP does
+not support generics natively, we can simulate aspects of these concepts using doc comments and type hints to make
+the code more robust and understandable. We can also discuss these concepts theoretically and show how they might
+be implemented in other languages, or how future versions of PHP might handle them.s
+
+STEP 1: Nullable Types (Account.php)
+Nullable types allow a type to accept null as a value. This is useful in scenarios where a variable, parameter,
+or return type might legitimately need to be null.
+
+STEP 2: GenericAccount (GenericAccount.php)
+PHP does not support generics, but we can discuss how they could be implemented theoretically
+and use comments (added to GenericAccount.php) to suggest generic-like behavior.
+
+STEP 3: Defining Generic Method (Transactable.php)
+Again, while PHP does not support generics, you can use doc comments to specify what types you
+would expect in a language that supports generics.
