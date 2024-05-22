@@ -1,0 +1,44 @@
+# Command to start the services in detached mode
+# docker-compose -p inft2100 -f docker-compose.yml up -d
+
+version: '3.8'  # Define the version of docker-compose
+
+services:
+  # Service for the web application
+  web-app:
+    build:
+      context: .              # Set the build context to the current directory
+      dockerfile: Dockerfile  # Specify the Dockerfile to use
+    ports:
+      - "8080:80"             # Map port 8080 on the host to port 80 in the container
+    container_name: web-app   # Set the container name to 'web-app'
+    restart: unless-stopped   # Restart the container unless it is explicitly stopped
+    volumes:
+      - .:/var/www/html       # Mount the current directory to /var/www/html in the container
+    environment:
+      - XDEBUG_CONFIG=client_host=host.docker.internal  # Set Xdebug configuration for remote debugging
+      - PHP_IDE_CONFIG=serverName=DockerServer          # Set PHP IDE configuration
+
+  # Service for PostgreSQL database
+  postgres-php:
+    image: postgres:15       # Use the official PostgreSQL image version 15
+    restart: unless-stopped  # Restart the container unless it is explicitly stopped
+    ports:
+      - "5435:5432"          # Map port 5435 on the host to port 5432 in the container
+    environment:
+      - POSTGRES_USER=admin         # Set the PostgreSQL user
+      - POSTGRES_PASSWORD=password  # Set the PostgreSQL password
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data  # Mount the host directory to the PostgreSQL data directory
+    container_name: postgres-php                  # Set the container name to 'postgres-php'
+
+  # Service for pgAdmin (PostgreSQL administration tool)
+  pgpadmin:
+    image: dpage/pgadmin4   # Use the official pgAdmin 4 image
+    restart: always         # Always restart the container to handle network errors when PostgreSQL is not ready
+    ports:
+      - "8888:80"           # Map port 8888 on the host to port 80 in the container
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.ca  # Set the default email for pgAdmin
+      - PGADMIN_DEFAULT_PASSWORD=password     # Set the default password for pgAdmin
+    container_name: pgadmingui-php            # Set the container name to 'pgadmingui-php'
