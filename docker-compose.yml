@@ -1,5 +1,5 @@
 # Command to start the services in detached mode
-# docker-compose -p inft2100 -f docker-compose.yml up -d
+# docker-compose -p COSC2200 -f docker-compose.yml up -d
 
 version: '3.8'  # Define the version of docker-compose
 
