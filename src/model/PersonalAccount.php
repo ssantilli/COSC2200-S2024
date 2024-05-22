@@ -1,5 +1,5 @@
 <?php
-
+namespace model;
 class PersonalAccount extends Account implements \interface\Transactable
 {
 

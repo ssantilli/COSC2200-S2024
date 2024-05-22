@@ -1,4 +1,5 @@
 <?php
+namespace model;
 
 require_once 'Account.php';
 
