@@ -1,17 +1,17 @@
 # Command to start the services in detached mode
-# docker-compose -p COSC2200 -f docker-compose.yml up -d
+# docker-compose -p cosc2200-s2024 -f docker-compose.yml up -d
 
 version: '3.8'  # Define the version of docker-compose
 
 services:
   # Service for the web application
-  web-app:
+  php-web-app:
     build:
       context: .              # Set the build context to the current directory
       dockerfile: Dockerfile  # Specify the Dockerfile to use
     ports:
       - "8080:80"             # Map port 8080 on the host to port 80 in the container
-    container_name: web-app   # Set the container name to 'web-app'
+    container_name: php-web-app   # Set the container name to 'php-web-app'
     restart: unless-stopped   # Restart the container unless it is explicitly stopped
     volumes:
       - .:/var/www/html       # Mount the current directory to /var/www/html in the container
@@ -33,7 +33,7 @@ services:
     container_name: postgres-php                  # Set the container name to 'postgres-php'
 
   # Service for pgAdmin (PostgreSQL administration tool)
-  pgpadmin:
+  pgadmin:
     image: dpage/pgadmin4   # Use the official pgAdmin 4 image
     restart: always         # Always restart the container to handle network errors when PostgreSQL is not ready
     ports:

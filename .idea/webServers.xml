@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dc299bd0-2ae7-4d1e-85bd-e574f86164de" name="Docker Deployment" url="http://localhost:8080">
+        <fileTransfer mountedRoot="C:\MyProjects\php\phpstorm\COSC2200-S2024" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

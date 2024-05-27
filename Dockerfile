@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy the composer.json file to the working directory
 COPY ./composer.json ./
 
-# Explicitly require fakerphp/faker and phpmailer/phpmailer packages without updating dependencies
-RUN composer require fakerphp/faker phpmailer/phpmailer --no-update
-
 # Install all Composer dependencies ignoring platform requirements
 RUN composer install --ignore-platform-reqs
 
@@ -17,24 +14,22 @@ RUN composer install --ignore-platform-reqs
 FROM php:8.2-apache
 
 # Update package lists and install required packages and PHP extensions
+# pgsql: Adds support for PostgreSQL database functions.
+# pdo: Provides a data access abstraction layer for PHP applications.
+# pdo_pgsql: Adds PostgreSQL driver support to PDO for accessing PostgreSQL databases.
 RUN apt-get update && apt-get install -y \
-        libpq-dev \                  # PostgreSQL library for pgsql extension
-        libjpeg-dev \                # JPEG library for gd extension
-        libpng-dev \                 # PNG library for gd extension
-        libgif-dev \                 # GIF library for gd extension
-        libfreetype6-dev && \        # FreeType library for gd extension
-    docker-php-ext-configure gd --with-jpeg --with-freetype && \  # Configure gd extension with JPEG and FreeType support
-    docker-php-ext-install gd pgsql pdo pdo_pgsql && \            # Install gd, pgsql, pdo, and pdo_pgsql extensions
-    pecl install xdebug && \                                      # Install Xdebug via PECL
-    docker-php-ext-enable xdebug                                  # Enable Xdebug extension
+    libpq-dev && \
+    docker-php-ext-install pgsql pdo pdo_pgsql && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug
 
 # Configure Xdebug settings
-RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/php.ini
-RUN echo "xdebug.mode=develop,debug" >> /usr/local/etc/php/php.ini
-RUN echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/php.ini
-RUN echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/php.ini
-RUN echo "xdebug.client_port=9003" >> /usr/local/etc/php/php.ini
-RUN echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/php.ini
+RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.mode=develop,debug" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.client_port=9003" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.discover_client_host=0" >> /usr/local/etc/php/php.ini
 
 # Set the working directory for the Apache server
 WORKDIR /var/www/html
