@@ -1,5 +1,7 @@
 <?php
 
+namespace model;
+
 class CheckingAccount extends GenericAccount
 {
 

@@ -14,14 +14,17 @@ RUN composer install --ignore-platform-reqs
 FROM php:8.2-apache
 
 # Update package lists and install required packages and PHP extensions
-# pgsql: Adds support for PostgreSQL database functions.
-# pdo: Provides a data access abstraction layer for PHP applications.
-# pdo_pgsql: Adds PostgreSQL driver support to PDO for accessing PostgreSQL databases.
 RUN apt-get update && apt-get install -y \
     libpq-dev && \
     docker-php-ext-install pgsql pdo pdo_pgsql && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug
+
+# Copy custom Apache configuration
+COPY ./config/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+# Enable Apache rewrite module
+RUN a2enmod rewrite
 
 # Configure Xdebug settings
 RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/php.ini && \
@@ -36,6 +39,9 @@ WORKDIR /var/www/html
 
 # Copy the Composer dependencies from the Composer image to the current working directory
 COPY --from=composer /app/vendor /var/www/html/vendor
+
+# Copy project files to the working directory
+COPY . /var/www/html
 
 # Expose port 80 for the Apache server
 EXPOSE 80
