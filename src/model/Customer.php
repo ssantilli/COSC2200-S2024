@@ -6,7 +6,7 @@ require_once 'Account.php';
 
 class Customer
 {
-    private $accounts = [];
+    private array $accounts = [];
 
     public function addAccount(Account $account): void {
         $this->accounts[] = $account;

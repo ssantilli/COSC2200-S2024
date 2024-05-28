@@ -4,7 +4,7 @@ require_once 'Account.php';
 
 class SavingsAccount extends Account
 {
-    private $interestRate;
+    private float $interestRate;
 
     public function __construct($owner, $accountNumber, $balance, $interestRate) {
         parent::__construct($owner, $accountNumber, $balance);

@@ -5,7 +5,7 @@ namespace model;
 class CheckingAccount extends GenericAccount
 {
 
-    private $transcationFees;
+    private float $transcationFees;
 
     public function __construct($transcationFees)
     {

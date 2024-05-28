@@ -2,9 +2,9 @@
 namespace model;
 class Account
 {
-  protected $accountNumber;
-  protected $balance;
-  protected $owner;    //WEEK 4: Nullable type, customerName can be null
+  protected string $accountNumber;
+  protected float $balance;
+  protected ?string $owner;    //WEEK 4: Nullable type, owner can be null
 
 
   public function __construct($owner, $accountNumber, $balance = 0)
@@ -14,7 +14,8 @@ class Account
       $this->balance = $balance;
   }
 
-  public function getOwner() {
+  public function getOwner(): ?string
+  {
       return $this->owner;
   }
 
@@ -23,10 +24,11 @@ class Account
       $this->balance = $amount;
   }
 
-  //WEEK 4
   public function getAccountDetails(): string
   {
-      return "Owner: {$this->owner}, Account Number: {$this->accountNumber}, Balance: {$this->balance}";
+      //WEEK 4 - Nullable Type
+      $nameDisplay = $this->owner ?? 'Unknown Customer';
+      return "Owner: {$nameDisplay}, Account Number: {$this->accountNumber}, Balance: {$this->balance}";
   }
 
 
