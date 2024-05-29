@@ -1,12 +1,20 @@
 <?php
 namespace model;
+
+/**
+ * We simulate the concept of generics using doc comments.
+ * Assume Transaction is a class that encapsulates transaction details.
+ */
 abstract class GenericAccount
 {
     /**
-     * WEEK 4
-     * GenericAccount<T>
-     * Here T would represent a type of transaction or account detail.
-     * In PHP, we simulate this by specifying the types in doc comments.
+     * Calculate fees based on a transaction.
+     *
+     *  Example (Assume):
+     *  param Transaction $transaction --> Details about the transaction for which fees need to be calculated.
+     *  abstract public function calculateFees($transaction);
+     *  return float --> The calculated fee.
+     *
      */
     abstract public function calculateFees(); // Method that could hypothetically use T
 }
