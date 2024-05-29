@@ -59,3 +59,7 @@ and use comments (added to GenericAccount.php) to suggest generic-like behavior.
 STEP 3: Defining Generic Method (Transactable.php)
 Again, while PHP does not support generics, you can use doc comments to specify what types you
 would expect in a language that supports generics.
+
+STEP 4: Dockerfile - build and explain
+
+STEP 5: docker-compose.yml - build and explain
