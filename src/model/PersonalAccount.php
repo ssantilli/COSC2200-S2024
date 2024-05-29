@@ -10,13 +10,21 @@ class PersonalAccount extends Account implements \interface\Transactable
         echo "Deposited {$amount} to " . $this->getOwner() . "'s account<br>";
     }
 
+
+
+    /**
+     * //WEEK 5
+     * @throws InsufficientFundsException
+     */
     public function withdraw($amount): void {
         if($amount<=$this->balance)
         {
            $this->updateBalance(-$amount);
             echo "Withdrew {$amount} from " . $this->getOwner() . "'s account<br>";
         }else{
+            //Week 5
             echo "Insufficient funds to withdraw {$amount} from " . $this->getOwner() . "'s account<br>";
+            throw new InsufficientFundsException();
         }
     }
 

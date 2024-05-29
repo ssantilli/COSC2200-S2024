@@ -13,9 +13,13 @@ class Customer
         echo "Added account for " . $account->getOwner() . "<br>";
     }
 
-    public function displayAccounts(): void  {
+    //WEEK 5 - Add a delegate-like callable parameter for custom actions
+    public function displayAccounts(callable $customAction = null): void  {
         foreach($this->accounts as $account) {
             echo $account->displayAccount() . "<br>";
+            if($customAction){
+                $customAction($account);
+            }
         }
     }
 

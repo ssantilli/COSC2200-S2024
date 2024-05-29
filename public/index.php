@@ -21,9 +21,17 @@ $acct2 = new SavingsAccount("Peter Parker", 67890, 5000, 2);
 $customer->addAccount($acct1);
 
 $acct1->deposit(500);
-$acct1->withdraw(200);
+
+//WEEK 5
+try {
+    $acct1->withdraw(200);
+} catch (\model\InsufficientFundsException $e) {
+}
 $acct2->applyInterestRate();
 
-$customer->displayAccounts();
+//WEEK 5
+$customer->displayAccounts(function($account){
+    echo "Logging account: {$account->accountNumber} with balance {$account->balance}\n";
+});
 
 

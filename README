@@ -59,3 +59,15 @@ and use comments (added to GenericAccount.php) to suggest generic-like behavior.
 STEP 3: Defining Generic Method (Transactable.php)
 Again, while PHP does not support generics, you can use doc comments to specify what types you
 would expect in a language that supports generics.
+
+Week 5
+--
+Custom Exceptions: Discuss how custom exceptions can provide more detailed error handling and can be caught
+specifically where needed.
+Delegates: (Callable Types and Anonymous Functions): Explain how callables and anonymous functions can be used
+to pass custom behavior into methods, mimicking the delegate functionality found in other languages.
+
+STEP 1: Create InsufficientFundException.php
+STEP 2: Using the Custom Exception (Step 1) in PersonalAccount.php
+STEP 3: Delegates (Callable Types and Anonymous Functions) Customer.php
+STEP 4: Using the Callable and Exception in Practice (public/index.php)
