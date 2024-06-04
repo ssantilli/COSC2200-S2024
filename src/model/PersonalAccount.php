@@ -10,8 +10,6 @@ class PersonalAccount extends Account implements \interface\Transactable
         echo "Deposited {$amount} to " . $this->getOwner() . "'s account<br>";
     }
 
-
-
     /**
      * //WEEK 5
      * @throws InsufficientFundsException

@@ -2,7 +2,6 @@
 
 namespace model;
 
-use ReturnTypeWillChange;
 use Throwable;
 
 class InsufficientFundsException extends \Exception
