@@ -5,30 +5,50 @@ require_once __DIR__ . '/../interface/Transactable.php';
 
 class PersonalAccount extends Account implements \interface\Transactable
 {
+    /**
+     * Week 6 - Changes
+     * @param $amount
+     * @return void
+     */
     public function deposit($amount): void {
+        if(!is_numeric($amount) || $amount <= 0){
+            throw new \InvalidArgumentException("Invalid Amount");
+        }
         $this->updateBalance($amount);
-        echo "Deposited {$amount} to " . $this->getOwner() . "'s account<br>";
     }
 
     /**
-     * //WEEK 5
+     * Week 6 - Changes
      * @throws InsufficientFundsException
      */
     public function withdraw($amount): void {
-        if($amount<=$this->balance)
-        {
-           $this->updateBalance(-$amount);
-            echo "Withdrew {$amount} from " . $this->getOwner() . "'s account<br>";
-        }else{
-            //Week 5
-            echo "Insufficient funds to withdraw {$amount} from " . $this->getOwner() . "'s account<br>";
+        if(!is_numeric($amount) || $amount <= 0){
+            throw new \InvalidArgumentException("In valid Amount");
+        }
+        if($amount > $this->balance){
             throw new InsufficientFundsException();
         }
+        $this->balance -= $amount;
     }
 
+    /**
+     * Week 6 - Example of Type and value comparison
+     * @throws InsufficientFundsException
+     */
+    public function transfer($amount, PersonalAccount $otherAccount): void
+    {
+        if($this === $otherAccount){   //Type anmd reference comparison
+            throw new \Exception("Cannot transfer to the same account");
+        }
+        $this->withdraw($amount);
+        $otherAccount->deposit($amount);
+    }
+
+    /**
+     * @return void
+     */
     public function displayAccount(): void
     {
         echo $this->getAccountDetails() . "<br>";
     }
-
 }

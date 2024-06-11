@@ -12,7 +12,7 @@ class CheckingAccount extends GenericAccount
         $this->transcationFees = $transcationFees;
     }
 
-    public function calculateFees()
+    public function calculateFees(): float
     {
         // TODO: Implement calculateFees() method.
         return $this->transcationFees;

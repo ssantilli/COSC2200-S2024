@@ -71,3 +71,14 @@ STEP 1: Create InsufficientFundException.php
 STEP 2: Using the Custom Exception (Step 1) in PersonalAccount.php
 STEP 3: Delegates (Callable Types and Anonymous Functions) Customer.php
 STEP 4: Using the Callable and Exception in Practice (public/index.php)
+
+Week 6
+---
+type comparisons, value comparisons, sorting collections, and simulate aspects of overloading conversion
+operators and using type casting. Since PHP does not support operator overloading or have an as operator like in
+some other languages.
+
+STEP 1: Type and Value Comparison - PersonalAccount.php - Changes to three methods deposit(), withdraw(), transfer() (NEW)
+STEP 2: Sorting Collections: sortAccounts() added
+STEP 3: Simulating Overloading Conversion Operators: Currency.php --> NEW CLASS added Week 6
+STEP 4: Using Type Casting: PHP uses type casting with (type) syntax instead of the 'as' operator, except in foreach loops.
