@@ -82,3 +82,6 @@ STEP 1: Type and Value Comparison - PersonalAccount.php - Changes to three metho
 STEP 2: Sorting Collections: sortAccounts() added
 STEP 3: Simulating Overloading Conversion Operators: Currency.php --> NEW CLASS added Week 6
 STEP 4: Using Type Casting: PHP uses type casting with (type) syntax instead of the 'as' operator, except in foreach loops.
+STEP 5: Updates to index.php
+
+STEP 6: PHPUnit Tests: PersonalAccountTest.php, SavingsAccountTest.php, phpunit.xml

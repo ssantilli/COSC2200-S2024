@@ -4,8 +4,7 @@ class Account
 {
   protected string $accountNumber;
   protected float $balance;
-  protected ?string $owner;    //WEEK 4: Nullable type, owner can be null
-
+  protected ?string $owner;
 
   public function __construct($owner, $accountNumber, $balance = 0)
   {
@@ -31,5 +30,8 @@ class Account
       return "Owner: {$nameDisplay}, Account Number: {$this->accountNumber}, Balance: {$this->balance}";
   }
 
+    public function getBalance() {
+        return $this->balance;
+    }
 
 }

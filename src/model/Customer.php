@@ -40,7 +40,7 @@ class Customer
      * @param $accountNumber
      * @return void
      */
-    public function getAccountNumber($accountNumber)
+    public function getAccountByNumber($accountNumber)
     {
         $accountNumber = (int) $accountNumber; //ensure the account number is an integer
 

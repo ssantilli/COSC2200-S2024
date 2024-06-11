@@ -12,7 +12,7 @@ class SavingsAccount extends Account
     }
 
     public function applyInterestRate(): void  {
-        $this->updateBalance($this->balance * $this->interestRate/100);
+        $this->updateBalance($this->balance + ($this->balance * $this->interestRate/100));
         echo "Applied interest rate to " . $this->getOwner() . "'s account<br>";
     }
 

@@ -5,6 +5,12 @@ require_once __DIR__ . '/../interface/Transactable.php';
 
 class PersonalAccount extends Account implements \interface\Transactable
 {
+
+    public function __construct($name, $accountNumber, $initialBalance) {
+        parent::__construct($name, $accountNumber);
+        $this->balance = $initialBalance;
+    }
+
     /**
      * Week 6 - Changes
      * @param $amount
