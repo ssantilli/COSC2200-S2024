@@ -14,9 +14,9 @@ name: PHP CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ week6 ]
   pull_request:
-    branches: [ main ]
+    branches: [ week6 ]
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: '8.2'
         extensions: mbstring, xml
         coverage: xdebug
 
@@ -36,3 +36,4 @@ jobs:
 
     - name: Run PHPUnit tests
       run: vendor/bin/phpunit --configuration phpunit.xml
+
