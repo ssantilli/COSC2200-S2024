@@ -24,16 +24,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+        php-version: '8.0'
         extensions: mbstring, xml
         coverage: xdebug
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Make PHPUnit executable
+      run: chmod +x vendor/bin/phpunit
+
     - name: Run PHPUnit tests
       run: vendor/bin/phpunit --configuration phpunit.xml
-
