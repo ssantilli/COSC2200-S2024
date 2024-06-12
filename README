@@ -79,9 +79,9 @@ operators and using type casting. Since PHP does not support operator overloadin
 some other languages.
 
 STEP 1: Type and Value Comparison - PersonalAccount.php - Changes to three methods deposit(), withdraw(), transfer() (NEW)
-STEP 2: Sorting Collections: sortAccounts() added
+STEP 2: Sorting Collections: Customer.php --> sortAccounts() added
 STEP 3: Simulating Overloading Conversion Operators: Currency.php --> NEW CLASS added Week 6
-STEP 4: Using Type Casting: PHP uses type casting with (type) syntax instead of the 'as' operator, except in foreach loops.
+STEP 4: Using Type Casting: Customer.php PHP (getAccountByNumber) fop loop using 'as'
 STEP 5: Updates to index.php
 
 STEP 6: PHPUnit Tests: PersonalAccountTest.php, SavingsAccountTest.php, phpunit.xml

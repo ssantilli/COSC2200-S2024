@@ -43,7 +43,7 @@ class PersonalAccount extends Account implements \interface\Transactable
      */
     public function transfer($amount, PersonalAccount $otherAccount): void
     {
-        if($this === $otherAccount){   //Type anmd reference comparison
+        if($this === $otherAccount){   //Type and reference comparison
             throw new \Exception("Cannot transfer to the same account");
         }
         $this->withdraw($amount);
