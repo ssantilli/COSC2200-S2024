@@ -1,0 +1,38 @@
+# Explanation of the Workflow:
+# ----------------------------
+# name: Names the workflow (e.g., "PHP CI").
+# on: Defines the GitHub events that will trigger the workflow. Here it's set to trigger on push and pull_request events to the main branch.
+# jobs: Groups together all the jobs that will be run when the workflow is triggered.
+# build: A single job in the workflow. You can name it anything relevant.
+# runs-on: Specifies the type of machine to run the job on. In this case, it's ubuntu-latest.
+# steps: A sequence of tasks that will be executed as part of the job.
+#    - actions/checkout@v2: Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+#    - shivammathur/setup-php@v2: Sets up a PHP environment with the specified PHP version and extensions.
+#    - Install dependencies: Runs composer install to install the PHP dependencies defined in your composer.json.
+#    - Run PHPUnit tests: Executes the PHPUnit tests using the configuration file phpunit.xml.
+name: PHP CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mbstring, xml
+        coverage: xdebug
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run PHPUnit tests
+      run: vendor/bin/phpunit --configuration phpunit.xml
