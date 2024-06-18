@@ -1,23 +1,37 @@
+# Name of the workflow
 name: Qodana
+
+# Define the events that trigger this workflow
 on:
+  # Manual trigger
   workflow_dispatch:
+  # Trigger on pull requests to the specified branches
   pull_request:
     branches:
       - main
-      - week 7
+      - week7
+  # Trigger on push events to the specified branches
   push:
     branches:
       - main
-      - week 7
+      - week7
 
 jobs:
+  # Define the Qodana job
   qodana:
+    # Use the latest version of Ubuntu
     runs-on: ubuntu-latest
+
     steps:
+      # Step to check out the repository
       - uses: actions/checkout@v3
         with:
+          # Fetch all history for all branches and tags
           fetch-depth: 0
+
+      # Step to run Qodana scan
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.2
         env:
+          # Use the Qodana token stored in GitHub secrets
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}

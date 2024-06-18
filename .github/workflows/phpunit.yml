@@ -1,42 +1,44 @@
 # Explanation of the Workflow:
 # ----------------------------
 # name: Names the workflow (e.g., "PHP CI").
-# on: Defines the GitHub events that will trigger the workflow. Here it's set to trigger on push and pull_request events to the main branch.
-# jobs: Groups together all the jobs that will be run when the workflow is triggered.
-# build: A single job in the workflow. You can name it anything relevant.
-# runs-on: Specifies the type of machine to run the job on. In this case, it's ubuntu-latest.
-# steps: A sequence of tasks that will be executed as part of the job.
-#    - actions/checkout@v2: Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
-#    - shivammathur/setup-php@v2: Sets up a PHP environment with the specified PHP version and extensions.
-#    - Install dependencies: Runs composer install to install the PHP dependencies defined in your composer.json.
-#    - Run PHPUnit tests: Executes the PHPUnit tests using the configuration file phpunit.xml.
 name: PHP CI
 
+# on: Defines the GitHub events that will trigger the workflow.
+# Here it's set to trigger on push and pull_request events to the week6 branch.
 on:
   push:
-    branches: [ week6 ]
+    branches: [ week7 ]
   pull_request:
-    branches: [ week6 ]
+    branches: [ week7 ]
 
+# jobs: Groups together all the jobs that will be run when the workflow is triggered.
 jobs:
+  # build: A single job in the workflow. You can name it anything relevant.
   build:
+    # runs-on: Specifies the type of machine to run the job on. In this case, it's ubuntu-latest.
     runs-on: ubuntu-latest
 
+    # steps: A sequence of tasks that will be executed as part of the job.
     steps:
-    - uses: actions/checkout@v2
+      # actions/checkout@v2: Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      - uses: actions/checkout@v2
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'
-        extensions: mbstring, xml
-        coverage: xdebug
+      # shivammathur/setup-php@v2: Sets up a PHP environment with the specified PHP version and extensions.
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml
+          coverage: xdebug
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-suggest
+      # Install dependencies: Runs composer install to install the PHP dependencies defined in your composer.json.
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-suggest
 
-    - name: Make PHPUnit executable
-      run: chmod +x vendor/bin/phpunit
+      # Make PHPUnit executable: Makes the PHPUnit binary executable.
+      - name: Make PHPUnit executable
+        run: chmod +x vendor/bin/phpunit
 
-    - name: Run PHPUnit tests
-      run: vendor/bin/phpunit --configuration phpunit.xml
+      # Run PHPUnit tests: Executes the PHPUnit tests using the configuration file phpunit.xml.
+      - name: Run PHPUnit tests
+        run: vendor/bin/phpunit --configuration phpunit.xml
