@@ -8,6 +8,7 @@ require_once __DIR__ . '/../src/model/DatabaseStorage.php';
 
 use model\Account;
 use model\Customer;
+use model\InsufficientFundsException;
 use model\PersonalAccount;
 use model\SavingsAccount;
 use model\DatabaseStorage;
@@ -36,7 +37,7 @@ echo " ----- Week 6 ---- " . "<br>";
 echo "Performing transactions:<br>";
 try {
     $acct1->withdraw(200);
-} catch (\model\InsufficientFundsException $e) {
+} catch (InsufficientFundsException $e) {
     echo "Error: " . $e->getMessage() . "<br>";
 }
 
