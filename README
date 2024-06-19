@@ -86,3 +86,8 @@ STEP 5: Updates to index.php
 
 STEP 6: PHPUnit Tests: PersonalAccountTest.php, SavingsAccountTest.php, phpunit.xml
 STEP 7: GitHubActions: .github/workflows/phpunit.yml, created, committed, and pushed ... reviewed the Action in GitHub
+
+Week 7
+-------
+qodana_code_quality.yml created
+qodana.yaml created

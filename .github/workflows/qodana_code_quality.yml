@@ -21,7 +21,11 @@ jobs:
   qodana:
     # Use the latest version of Ubuntu
     runs-on: ubuntu-latest
-
+    # Permissions:
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
     steps:
       # Step to check out the repository
       - uses: actions/checkout@v3
@@ -32,6 +36,10 @@ jobs:
       # Step to run Qodana scan
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.2
+        with:
+          args: --apply-fixes
+          pr-mode: false
+          push-fixes: pull-request
         env:
           # Use the Qodana token stored in GitHub secrets
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
