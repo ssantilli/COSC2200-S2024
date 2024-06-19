@@ -5,6 +5,7 @@ require_once __DIR__ . '/../src/model/PersonalAccount.php';
 require_once __DIR__ . '/../src/model/SavingsAccount.php';
 require_once __DIR__ . '/../src/model/InsufficientFundsException.php';
 
+use model\Account;
 use model\Customer;
 use model\PersonalAccount;
 use model\SavingsAccount;
@@ -54,3 +55,19 @@ if ($requestedAccount) {
 } else {
     echo "No account found for the number provided.<br>";
 }
+
+//Week 7
+//$dsn = 'pgsql:host=localhost;port=5435;dbname=BankingDB;';
+$dsn = 'pgsql:host=host.docker.internal;port=5435;dbname=BankingDB;';
+$username = 'admin';
+$password = 'password';
+$storage = new model\DatabaseStorage($dsn, $username, $password);
+
+try {
+    $account = new Account("Bruce Wayne", "12345678");
+    $accounts = $storage->getAllAccounts();
+    print_r($accounts);
+} catch (PDOException $e) {
+    echo "Database error: " . $e->getMessage();
+}
+
