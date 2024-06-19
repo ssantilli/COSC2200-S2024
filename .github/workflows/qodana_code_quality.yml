@@ -43,3 +43,11 @@ jobs:
         env:
           # Use the Qodana token stored in GitHub secrets
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+
+      # Step to create a pull request using the GitHub CLI
+      - name: Create Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+          gh pr create --repo ssantilli/COSC2200-S2024 --title "🤖 Apply quick-fixes by Qodana" --body-file /tmp/pr-body.txt --base refs/heads/week7 --head qodana/quick-fixes-9580741490
