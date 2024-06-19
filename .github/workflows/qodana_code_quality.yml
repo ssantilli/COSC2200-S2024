@@ -21,7 +21,7 @@ jobs:
   qodana:
     # Use the latest version of Ubuntu
     runs-on: ubuntu-latest
-    # Permissions:
+    # Permissions
     permissions:
       contents: write
       pull-requests: write
