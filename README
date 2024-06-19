@@ -92,7 +92,7 @@ Week 7
 This week we cover Flat Files, JSON and Database and Continuous Integration
 STEP 1: Flat File Storage --> FlatFileStorage.php
 STEP 2: JSON --> JsonStorage.php
-STEP 3: Database --> DatabaseStorage.php
+STEP 3: Database --> DatabaseStorage.php  (I would just demonstrate this one in class)
 STEP 4: Continuous Integration (using Qodana from JetBrains)
 - qodana_code_quality.yml created
 - qodana.yaml created
