@@ -18,7 +18,12 @@ class Account
       return $this->owner;
   }
 
-  protected function updateBalance($amount): void
+    public function getAccountNumber(): string
+    {
+        return $this->accountNumber;
+    }
+
+    protected function updateBalance($amount): void
   {
       $this->balance = $amount;
   }

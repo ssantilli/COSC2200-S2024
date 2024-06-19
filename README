@@ -89,5 +89,10 @@ STEP 7: GitHubActions: .github/workflows/phpunit.yml, created, committed, and pu
 
 Week 7
 -------
-qodana_code_quality.yml created
-qodana.yaml created
+This week we cover Flat Files, JSON and Database and Continuous Integration
+STEP 1: Flat File Storage --> FlatFileStorage.php
+STEP 2: JSON --> JsonStorage.php
+STEP 3: Database --> DatabaseStorage.php
+STEP 4: Continuous Integration (using Qodana from JetBrains)
+- qodana_code_quality.yml created
+- qodana.yaml created
