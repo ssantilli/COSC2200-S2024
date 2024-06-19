@@ -7,6 +7,7 @@ require_once __DIR__ . '/../src/model/InsufficientFundsException.php';
 
 use model\Account;
 use model\Customer;
+use model\InsufficientFundsException;
 use model\PersonalAccount;
 use model\SavingsAccount;
 
@@ -30,7 +31,7 @@ $acct1->deposit(500);
 echo "Performing transactions:<br>";
 try {
     $acct1->withdraw(200);
-} catch (\model\InsufficientFundsException $e) {
+} catch (InsufficientFundsException $e) {
     echo "Error: " . $e->getMessage() . "<br>";
 }
 

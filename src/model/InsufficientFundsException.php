@@ -2,9 +2,10 @@
 
 namespace model;
 
+use Exception;
 use Throwable;
 
-class InsufficientFundsException extends \Exception
+class InsufficientFundsException extends Exception
 {
     public function __construct(string $message = "Insufficient funds for this transaction",
                                 int $code = 0, ?Throwable $previous = null)

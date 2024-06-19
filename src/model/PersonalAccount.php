@@ -1,9 +1,13 @@
 <?php
 namespace model;
 
+use Exception;
+use interface\Transactable;
+use InvalidArgumentException;
+
 require_once __DIR__ . '/../interface/Transactable.php';
 
-class PersonalAccount extends Account implements \interface\Transactable
+class PersonalAccount extends Account implements Transactable
 {
 
     public function __construct($name, $accountNumber, $initialBalance) {
@@ -18,7 +22,7 @@ class PersonalAccount extends Account implements \interface\Transactable
      */
     public function deposit($amount): void {
         if(!is_numeric($amount) || $amount <= 0){
-            throw new \InvalidArgumentException("Invalid Amount");
+            throw new InvalidArgumentException("Invalid Amount");
         }
         $this->updateBalance($amount);
     }
@@ -29,7 +33,7 @@ class PersonalAccount extends Account implements \interface\Transactable
      */
     public function withdraw($amount): void {
         if(!is_numeric($amount) || $amount <= 0){
-            throw new \InvalidArgumentException("In valid Amount");
+            throw new InvalidArgumentException("In valid Amount");
         }
         if($amount > $this->balance){
             throw new InsufficientFundsException();
@@ -44,7 +48,7 @@ class PersonalAccount extends Account implements \interface\Transactable
     public function transfer($amount, PersonalAccount $otherAccount): void
     {
         if($this === $otherAccount){   //Type and reference comparison
-            throw new \Exception("Cannot transfer to the same account");
+            throw new Exception("Cannot transfer to the same account");
         }
         $this->withdraw($amount);
         $otherAccount->deposit($amount);
