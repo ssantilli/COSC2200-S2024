@@ -10,9 +10,9 @@ services:
       context: .              # Set the build context to the current directory
       dockerfile: Dockerfile  # Specify the Dockerfile to use
     ports:
-      - "8080:80"             # Map port 8080 on the host to port 80 in the container
-    container_name: php-web-app   # Set the container name to 'php-web-app'
-    restart: unless-stopped   # Restart the container unless it is explicitly stopped
+      - "8080:80"                          # Map port 8080 on the host to port 80 in the container
+    container_name: php-web-app-cosc2200   # Set the container name to 'php-web-app'
+    restart: unless-stopped                # Restart the container unless it is explicitly stopped
     volumes:
       - .:/var/www/html       # Mount the current directory to /var/www/html in the container
     environment:
@@ -30,7 +30,7 @@ services:
       - POSTGRES_PASSWORD=password  # Set the PostgreSQL password
     volumes:
       - ./postgres/data:/var/lib/postgresql/data  # Mount the host directory to the PostgreSQL data directory
-    container_name: postgres-php                  # Set the container name to 'postgres-php'
+    container_name: postgres-php-cosc2200         # Set the container name to 'postgres-php'
 
   # Service for pgAdmin (PostgreSQL administration tool)
   pgadmin:
@@ -41,4 +41,4 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=user@domain.ca  # Set the default email for pgAdmin
       - PGADMIN_DEFAULT_PASSWORD=password     # Set the default password for pgAdmin
-    container_name: pgadmingui-php            # Set the container name to 'pgadmingui-php'
+    container_name: pgadmingui-cosc2200       # Set the container name to 'pgadmingui-php'

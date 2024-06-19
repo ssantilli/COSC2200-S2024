@@ -3,32 +3,25 @@
 namespace model;
 
 use PDO;
+use PDOException;
 
-/**
- * Manages account data using a database.
- */
 class DatabaseStorage {
-    private PDO $pdo;
+    private $pdo;
 
     public function __construct($dsn, $username, $password) {
         $this->pdo = new PDO($dsn, $username, $password);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
-    /**
-     * Inserts an account into the database.
-     */
-    public function saveAccount(Account $account): void
-    {
+    public function saveAccount(Account $account): void {
         $stmt = $this->pdo->prepare("INSERT INTO accounts (accountNumber, balance) VALUES (?, ?)");
-        $stmt->execute([$account->getAccountNumber(), $account->getBalance()]);
+        $stmt->execute([$account->accountnumber, $account->balance]);
     }
 
-    /**
-     * Retrieves all accounts from the database.
-     */
-    public function getAllAccounts(): false|array
-    {
-        $stmt = $this->pdo->query("SELECT * FROM accounts");
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'model\\Account');
+    public function getAllAccounts(): array {
+        $stmt = $this->pdo->query("SELECT id, accountNumber as accountNumber, balance FROM accounts");
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'model\Account');
     }
+
 }

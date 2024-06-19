@@ -16,5 +16,9 @@ class SavingsAccount extends Account
         echo "Applied interest rate to " . $this->getOwner() . "'s account<br>";
     }
 
+    public function displayAccount(): void
+    {
+        echo $this->getAccountDetails() . "<br>";
+    }
 
 }

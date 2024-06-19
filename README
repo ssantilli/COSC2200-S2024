@@ -94,10 +94,10 @@ STEP 1: Flat File Storage --> FlatFileStorage.php  (Not demonstrated)
 STEP 2: JSON --> JsonStorage.php (Not demonstrated)
 
 STEP 3: Database --> DatabaseStorage.php
-You will need to create the database first, please review the sql in script/sql/banking.sql
+STEP 4: You will need to create the database first, please review the sql in script/sql/banking.sql
 
-STEP 4: Test call to database --> index.php
+STEP 5: Test call to database --> index.php
 
-STEP 5: Continuous Integration (using Qodana from JetBrains)
+STEP 6: Continuous Integration (using Qodana from JetBrains)
 - qodana_code_quality.yml created
 - qodana.yaml created

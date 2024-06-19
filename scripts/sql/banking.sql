@@ -34,8 +34,8 @@ CREATE TABLE transactions (
 
 -- Insert example data into customers
 INSERT INTO customers (name, address, email) VALUES
-                                                 ('John Doe', '123 Elm St', 'john.doe@email.com'),
-                                                 ('Jane Smith', '456 Oak St', 'jane.smith@email.com');
+                                                 ('Bruce Wayne', '123 Elm St', 'john.doe@email.com'),
+                                                 ('Peter Parker', '456 Oak St', 'jane.smith@email.com');
 
 -- Verify the schema
 --SELECT * FROM customers;
