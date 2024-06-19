@@ -15,13 +15,22 @@ class DatabaseStorage {
     }
 
     public function saveAccount(Account $account): void {
-        $stmt = $this->pdo->prepare("INSERT INTO accounts (accountNumber, balance) VALUES (?, ?)");
-        $stmt->execute([$account->accountnumber, $account->balance]);
+        $stmt = $this->pdo->prepare("INSERT INTO accounts (owner, account_number, balance) VALUES (?, ?, ?)");
+        $stmt->execute([$account->owner, $account->account_number, $account->balance]);
     }
 
     public function getAllAccounts(): array {
-        $stmt = $this->pdo->query("SELECT id, accountNumber as accountNumber, balance FROM accounts");
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'model\Account');
+        $stmt = $this->pdo->query("SELECT * FROM accounts");
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $accounts = [];
+        foreach ($results as $row) {
+            $account = new Account($row['owner'], $row['account_number'], $row['balance']);
+            $account->id = $row['id'];
+            $accounts[] = $account;
+        }
+        return $accounts;
     }
+
+
 
 }

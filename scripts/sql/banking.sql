@@ -16,7 +16,8 @@ CREATE TABLE customers (
 -- Create the accounts table with a link to customers
 CREATE TABLE accounts (
                           id SERIAL PRIMARY KEY,
-                          accountNumber VARCHAR(255) NOT NULL,
+                          owner VARCHAR(255) NOT NULL,
+                          account_number VARCHAR(255) NOT NULL,
                           balance DECIMAL(10, 2) NOT NULL,
                           customer_id INTEGER,
                           FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE SET NULL
@@ -33,9 +34,9 @@ CREATE TABLE transactions (
 );
 
 -- Insert example data into customers
-INSERT INTO customers (name, address, email) VALUES
-                                                 ('Bruce Wayne', '123 Elm St', 'john.doe@email.com'),
-                                                 ('Peter Parker', '456 Oak St', 'jane.smith@email.com');
+--INSERT INTO customers (name, address, email) VALUES
+--                                                 ('Bruce Wayne', '123 Elm St', 'john.doe@email.com'),
+--                                                 ('Peter Parker', '456 Oak St', 'jane.smith@email.com');
 
 -- Verify the schema
 --SELECT * FROM customers;

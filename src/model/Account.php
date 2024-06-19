@@ -3,9 +3,18 @@ namespace model;
 class Account
 {
   public $id;
-  public string $accountnumber;
+  public string $account_number;
   public float $balance;
   public ?string $owner;
+
+  public $customer_id;
+
+    public function __construct($owner, $accountNumber, $balance = 0)
+    {
+        $this->owner = $owner;
+        $this->account_number = $accountNumber;
+        $this->balance = $balance;
+    }
 
     /**
      * @return mixed
@@ -24,13 +33,6 @@ class Account
     }
 
 
-  public function __construct($owner, $accountNumber, $balance = 0)
-  {
-      $this->owner = $owner;
-      $this->accountnumber = $accountNumber;
-      $this->balance = $balance;
-  }
-
   public function getOwner(): ?string
   {
       return $this->owner;
@@ -38,7 +40,7 @@ class Account
 
     public function getAccountnumber(): string
     {
-        return $this->accountnumber;
+        return $this->account_number;
     }
 
     protected function updateBalance($amount): void
@@ -50,7 +52,7 @@ class Account
   {
       //WEEK 4 - Nullable Type
       $nameDisplay = $this->owner ?? 'Unknown Customer';
-      return "Owner: {$nameDisplay}, Account Number: {$this->accountnumber}, Balance: {$this->balance}";
+      return "Owner: {$nameDisplay}, Account Number: {$this->account_number}, Balance: {$this->balance}";
   }
 
     public function getBalance() {

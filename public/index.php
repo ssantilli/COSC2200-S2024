@@ -72,14 +72,14 @@ echo "Database Connectivity" . "<br>";
 $dsn = 'pgsql:host=host.docker.internal;port=5435;dbname=BankingDB;';
 $username = 'admin';
 $password = 'password';
-$storage = new DatabaseStorage($dsn, $username, $password);
+$db = new DatabaseStorage($dsn, $username, $password);
 
 
 try {
-    $newAccount = new Account("Bruce Wayne", "987654321");
-    //$storage->saveAccount($newAccount);
-    $accounts = $storage->getAllAccounts();
-    //print_r($accounts);
+    $newAccount = new Account("Bruce Wayne", "987654321", 1000);
+    $db->saveAccount($newAccount);
+    $accounts = $db->getAllAccounts();
+    print_r($accounts);
 } catch (PDOException $e) {
     echo "Database error: " . $e->getMessage();
 }
