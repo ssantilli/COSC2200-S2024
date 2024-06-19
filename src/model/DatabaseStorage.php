@@ -3,7 +3,6 @@
 namespace model;
 
 use PDO;
-use PDOException;
 
 class DatabaseStorage {
     private $pdo;
